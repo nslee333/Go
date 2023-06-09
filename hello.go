@@ -2,14 +2,16 @@ package main
 
 import "fmt"
 
+const englishHelloPrefix = "Hello, "
+
 func Hello(name string) string {
-	return "Hello, " + name
+	if name == "" {
+		name = "World"
+	}
+
+	return englishHelloPrefix + name
 }
 
 func main() {
 	fmt.Println(Hello("World"))
 }
-
-// & Not sure if I have everything is installed okay
-
-// ^ Still chasing my tail with install vscode error
