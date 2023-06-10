@@ -12,20 +12,12 @@ func Sum(numbers []int) int {
 
 func SumAll(numbersToSum ...[]int) []int {
 
-	// init sumSlice
-	sumSlice := []int{}
+	var sums []int
 
-	for i := 0; i < len(numbersToSum); i++ {
-		append(sumSlice, Sum(numbersToSum[i]))
-		// & Trying to append value :)
+	for _, numbers := range numbersToSum {
+		sums = append(sums, Sum(numbers))
 	}
 
-	// Need to Loop through each parameter slice.
+	return sums
 
-	// Sum each slice, push that to sumSlice
-
-	// Return sumSlice
-
-	return nil
-	// return []int{}
 }
