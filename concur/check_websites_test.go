@@ -6,7 +6,7 @@ import (
 )
 
 func mockWebsiteChecker(url string) bool {
-	if url == "waat://furhuyrterwe.geds" {
+	if url == "waat://furhurterwe.geds" {
 		return false
 	}
 	return true
@@ -15,7 +15,7 @@ func mockWebsiteChecker(url string) bool {
 func TestCheckWebsites(t *testing.T) {
 	websites := []string{
 		"http://google.com",
-		"http://blog.gypsydabe5.com",
+		"http://blog.gypsydave5.com",
 		"waat://furhurterwe.geds",
 	}
 
