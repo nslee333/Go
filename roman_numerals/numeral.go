@@ -1,6 +1,6 @@
 package main
 
-func convertToRoman(arabic int) string {
+func ConvertToRoman(arabic int) string {
 
 	if arabic == 2 {
 		return "II"
