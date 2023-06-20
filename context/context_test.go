@@ -8,25 +8,6 @@ import (
 	"time"
 )
 
-type StubStore interface {
-	Fetch() string
-	Cancel()
-}
-
-type SpyStore struct {
-	response  string
-	cancelled bool
-}
-
-func (s *SpyStore) Fetch() string {
-	time.Sleep(100 * time.Millisecond)
-	return s.response
-}
-
-func (s *SpyStore) Cancel() {
-	s.cancelled = true
-}
-
 func TestServer(t *testing.T) {
 	data := "hello, world"
 
@@ -44,7 +25,7 @@ func TestServer(t *testing.T) {
 		}
 	})
 
-	t.Run("returns data from store", func(t *testing.T) {
+	t.Run("tells store to cancel work if request is cancelled", func(t *testing.T) {
 		store := &SpyStore{response: data, t: t}
 		svr := Server(store)
 
