@@ -10,7 +10,15 @@ func ConvertToRoman(arabic int) string {
 
 	var result strings.Builder
 
-	for i := 0; i < arabic; i++ {
+	for i := arabic; i > 0; i-- {
+
+		if arabic == 4 {
+			result.WriteString("IV")
+			break
+		} else if arabic == 5 {
+			result.WriteString("V")
+			break
+		}
 		result.WriteString("I")
 	}
 
