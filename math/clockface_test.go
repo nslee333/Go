@@ -26,3 +26,22 @@ func TestSecondsInRadians(t *testing.T) {
 		})
 	}
 }
+
+func TestSecondHandPoint(t *testing.T) {
+	cases := []struct {
+		time  time.Time
+		point Point
+	}{
+		{simpleTime(0, 0, 30), Point{0, -1}},
+		{simpleTime(0, 0, 45), Point{-1, 0}},
+	}
+
+	for _, c := range cases {
+		t.Run(testName(c.time), func(t *testing.T) {
+			got := secondHandPoint(c.time)
+			if got != c.point {
+				t.Fatalf("wanted %v Point, but got %v", c.point, got)
+			}
+		})
+	}
+}

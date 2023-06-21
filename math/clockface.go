@@ -15,7 +15,6 @@ func SecondHand(t time.Time) Point {
 }
 
 func secondsInRadians(t time.Time) float64 {
-	// return float64(t.Second()) * (math.Pi / 30)
 	return (math.Pi / (30 / (float64(t.Second()))))
 }
 
@@ -25,4 +24,11 @@ func simpleTime(hours, minutes, seconds int) time.Time {
 
 func testName(t time.Time) string {
 	return t.Format("15:04:05")
+}
+
+func secondHandPoint(t time.Time) Point {
+	angle := secondsInRadians(t)
+	x := math.Sin(angle)
+	y := math.Cos(angle)
+	return Point{x, y}
 }
