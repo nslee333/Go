@@ -1,4 +1,4 @@
-module github.com/nslee333/go_with_tdd
+module go_with_tdd
 
 go 1.20
 
