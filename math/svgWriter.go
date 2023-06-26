@@ -8,9 +8,9 @@ import (
 
 const (
 	secondHandLength = 90
+	minuteHandLength = 80
 	clockCentreX     = 150
 	clockCentreY     = 150
-	minuteHandLength = 80
 )
 
 // SVGWriter writes an SVG representation of an analogue clock, showing the time t, to the writer w.
