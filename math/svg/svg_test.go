@@ -1,4 +1,4 @@
-package clockface_test
+package svg_test
 
 import (
 	"bytes"
@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/quii/learn-go-with-tests/math/v9/clockface"
+	"github.com/quii/learn-go-with-tests/math/vFinal/clockface"
 )
 
 type SVG struct {
