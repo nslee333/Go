@@ -1,4 +1,4 @@
-module hello
+module go_with_tdd
 
 go 1.20
 
