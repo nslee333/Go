@@ -6,7 +6,8 @@ import (
 )
 
 type Post struct {
-	Title string
+	Title       string
+	Description string
 }
 
 func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
@@ -17,7 +18,7 @@ func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
 	}
 	var posts []Post
 	for _, f := range dir {
-		post, err := getPost(fileSystem, f)
+		post, err := getPost(fileSystem, f.Name())
 		if err != nil {
 			return nil, err
 		}
@@ -42,6 +43,6 @@ func newPost(postFile io.Reader) (Post, error) {
 		return Post{}, err
 
 	}
-	post := Post{Title: string(postData)[7:]}
+	post := Post{Title: string(postData)[:]}
 	return post, nil
 }
