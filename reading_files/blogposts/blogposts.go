@@ -1,9 +1,14 @@
-package reading_files
+package blogposts
 
 import (
 	"bufio"
 	"io"
 	"io/fs"
+)
+
+const (
+	titleSeparator       = "Title: "
+	descriptionSeparator = "Description: "
 )
 
 type Post struct {
@@ -41,11 +46,13 @@ func getPost(fileSystem fs.FS, fileName string) (Post, error) {
 func newPost(postFile io.Reader) (Post, error) {
 	scanner := bufio.NewScanner(postFile)
 
-	scanner.Scan()
-	titleLine := scanner.Text()
+	readLine := func() string {
+		scanner.Scan()
+		return scanner.Text()
+	}
 
-	scanner.Scan()
-	descriptionLine := scanner.Text()
+	title := readLine()[len(titleSeparator):]
+	description := readLine()[13:]
 
-	return Post{Title: titleLine[:], Description: descriptionLine[:]}, nil
+	return Post{Title: title, Description: description}, nil
 }
