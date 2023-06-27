@@ -18,8 +18,8 @@ Tags: rust, borrow-checker`
 	)
 
 	fs := fstest.MapFS{
-		"hello world.md":  {Data: []byte("hi")},
-		"hello world2.md": {Data: []byte("hola")},
+		"hello world.md":  {Data: []byte(firstBody)},
+		"hello world2.md": {Data: []byte(secondBody)},
 	}
 
 	posts, err := NewPostsFromFS(fs)
