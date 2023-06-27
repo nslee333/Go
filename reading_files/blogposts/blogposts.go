@@ -16,9 +16,10 @@ const (
 )
 
 type Post struct {
-	Title, Description string
-	Tags               []string
-	Body               string
+	Title       string
+	Description string
+	Tags        []string
+	Body        string
 }
 
 func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
@@ -56,21 +57,19 @@ func newPost(postBody io.Reader) (Post, error) {
 		return strings.TrimPrefix(scanner.Text(), tagName)
 	}
 
-	title := readMetaLine(titleSeparator)
-	description := readMetaLine(descriptionSeparator)
-	tags := strings.Split(readMetaLine(tagsSeparator), ", ")
+	return Post{
+		Title:       readMetaLine(titleSeparator),
+		Description: readMetaLine(descriptionSeparator),
+		Tags:        strings.Split(readMetaLine(tagsSeparator), ", "),
+		Body:        readBody(scanner),
+	}, nil
+}
 
+func readBody(scanner *bufio.Scanner) string {
 	scanner.Scan()
 	buf := bytes.Buffer{}
 	for scanner.Scan() {
 		fmt.Fprintln(&buf, scanner.Text())
 	}
-	body := strings.TrimSuffix(buf.String(), "\n")
-
-	return Post{
-		Title:       title,
-		Description: description,
-		Tags:        tags,
-		Body:        body,
-	}, nil
+	return strings.TrimSuffix(buf.String(), "\n")
 }
