@@ -42,7 +42,7 @@ M`
 		Title:       "Post 1",
 		Description: "Description 1",
 		Tags:        []string{"tdd", "go"},
-		Body: `Hello 
+		Body: `Hello
 World`,
 	})
 }
