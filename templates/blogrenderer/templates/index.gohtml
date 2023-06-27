@@ -26,3 +26,8 @@ func (r *PostRenderer) Render(w io.Writer, p Post) error {
 func (r *PostRenderer) RenderIndex(w io.Writer, posts []Post) error {
 	return r.templ.ExecuteTemplate(w, "index.gohtml", posts)
 }
+
+
+{{template "top" .}}
+<ol>{{range .}}<li><a href="/post/{{.SanitisedTitle}}">{{.Title}}</a></li>{{end}}</ol>
+{{template "bottom" .}}
