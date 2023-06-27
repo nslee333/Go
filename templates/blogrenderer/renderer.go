@@ -2,9 +2,9 @@ package blogrenderer
 
 import (
 	"embed"
+	"html/template"
 	"io"
 	"strings"
-	"text/template"
 
 	"github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/parser"
