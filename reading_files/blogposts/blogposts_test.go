@@ -32,7 +32,11 @@ Tags: rust, borrow-checker`
 		t.Errorf("got %d, wanted %d posts", len(posts), len(fs))
 	}
 
-	assertPost(t, posts[0], Post{Title: "Post 1", Description: "Description 1"})
+	assertPost(t, posts[0], Post{
+		Title:       "Post 1",
+		Description: "Description 1",
+		Tags:        []string{"tdd", "go"},
+	})
 }
 
 func assertPost(t *testing.T, got Post, want Post) {
