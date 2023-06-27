@@ -12,8 +12,8 @@ const (
 )
 
 type Post struct {
-	Title       string
-	Description string
+	Title, Description, Body string
+	Tags                     []string
 }
 
 func NewPostsFromFS(fileSystem fs.FS) ([]Post, error) {
